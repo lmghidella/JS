@@ -1,3 +1,15 @@
+const meses =['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
+const descuentos =[
+
+    {nombre:'Enero',desc:10},
+    {nombre:'Febrero', desc:15},
+    {nombre:'Marzo', desc:8},
+    {nombre:'Abril',desc:16},
+    {nombre:'Mayo',desc:4},
+    {nombre:'Junio',desc:13}
+    
+
+]
 class Prestamo { 
     constructor(capital, interes,cuotas,amortizacion) {
         this.capital = capital;
@@ -18,7 +30,7 @@ class Prestamo {
         console.log('Valor Cuota: ',valor_cuota.toFixed(2));
         saldo=saldo-cuota_pura;
         console.log('Saldo Capital: ', saldo.toFixed(2));
-        document.write('<p>Valor de cuota nº ' +(i+1)+': $'+valor_cuota.toFixed(2) +'-----------------Saldo de capital: $'+saldo.toFixed(2)+'</p>');
+        document.write('<p>Mes: '+meses[i%12]+ ' ----- Valor de cuota nº ' +(i+1)+': $'+valor_cuota.toFixed(2) +'-----------------Saldo de capital: $'+saldo.toFixed(2)+'</p>');
         total_prestamo=total_prestamo+valor_cuota;
     }
     console.log('Total prestamo',total_prestamo);
@@ -51,6 +63,15 @@ cuotas=prompt('Ingrese la cantidad de cuotas');
 //interes X para probar lo aprendido hasta el momento.
 let prestamo1=new Prestamo (capital, tasa,cuotas,amortizacion);
 document.write('<h4> Valor total del prestamo: $'+prestamo1.calcular().toFixed(2)+'   -----<h4>');
+//MESES CON DESCUENTO!
+let resultado = descuentos.filter(descuento=>descuento.desc>8);//informo meses con descuento mayor a 8
+console.log('resultado--->', resultado);
+
+//Leo un indice del resultado
+console.log('El indice de Abril es',resultado.findIndex(mes=>mes.nombre==='Abril'));
+
+
+ 
 
 
 
